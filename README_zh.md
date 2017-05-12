@@ -1,11 +1,9 @@
-[中文说明](/README_zh.md)
+[English README](/README.md)
 
 # QRCodeJS
-Cross-browser QRCode generator for javascript. You can add img in QRCode.
-QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM.
-QRCode.js has no dependencies.
+由于自身的需求需要为二维码在中间添加图片
 
-## Basic Usages
+## 基础使用
 ```
 <div id="qrcode"></div>
 <script type="text/javascript">
@@ -13,7 +11,7 @@ new QRCode(document.getElementById("qrcode"), "https://github.com/JianmingXia/QR
 </script>
 ```
 
-or with some options
+其它使用：
 
 ```
 <div id="qrcode"></div>
@@ -31,19 +29,15 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 </script>
 ```
 
-and you can use some methods
+还可使用如下方法：
 
 ```
 qrcode.clear(); // clear the code.
 qrcode.makeCode("http://github.com"); // make another code.
 ```
 
-## Browser Compatibility
+## 浏览器兼容性
 IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.
 
-## License
-MIT License
-
-
-# Notice
-This repository is base on [qrcodejs](https://github.com/davidshimjs/qrcodejs), but now author is stop update, so I add this. If I have infringed, please tell me, I'm sorry, I will delete this.
+# 注意
+这个项目基于 [qrcodejs](https://github.com/davidshimjs/qrcodejs)，但是现在作者已经停止了更新，为了让更多的人使用，建立这个项目，如果我已侵权，马上删除。
