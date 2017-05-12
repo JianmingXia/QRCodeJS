@@ -1,6 +1,7 @@
-[中文说明](/README_zh.md)
-
 # QRCodeJS
+- [中文说明](/README_zh.md)
+- [项目说明](http://blog.ryoma.top/2017/05/12/%E4%B8%BA%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/)
+
 Cross-browser QRCode generator for javascript. You can add img in QRCode.
 QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM.
 QRCode.js has no dependencies.
