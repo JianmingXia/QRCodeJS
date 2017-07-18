@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="qrcode_1" style="width:200px; height:200px; margin-top:15px;"></div>
+<div id="qrcode_2" style="width:200px; height:200px; margin-top:15px;"></div>
 
 <script type="text/javascript">
 
@@ -16,14 +17,23 @@ new QRCode(document.getElementById("qrcode_1"), {
 	width : 200,
 	height : 200,
 	text: "https://github.com/JianmingXia/QRCodeJSddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-	// img_src: "http://cdnlocal.quqi.com/trunk/lib/fonts/avatar.png",
-	img_src: "https://develop.jinzhuzhu.com.cn/Uploads/Picture/9134720170718144549.png",
+	img_src: "http://cdnlocal.quqi.com/trunk/lib/fonts/avatar.png",
+	// img_src: "https://develop.jinzhuzhu.com.cn/Uploads/Picture/9134720170718144549.png",
     img_width: 50,
-    use_canvas: true // (是否使用canvas绘制，默认true)
+    use_canvas: false // (是否使用canvas绘制，默认true)
     // 使用img_src，需要保证图片是支持跨域访问的，不然我也无能为力
 });
 
-debugger;
+new QRCode(document.getElementById("qrcode_2"), {
+	width : 200,
+	height : 200,
+	text: "https://github.com/JianmingXia/QRCodeJSddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+	img_src: "http://cdnlocal.quqi.com/trunk/lib/fonts/avatar.png?1",
+    img_width: 50,
+    use_canvas: false // (是否使用canvas绘制，默认true)
+    // 使用img_src，需要保证图片是支持跨域访问的，不然我也无能为力
+});
+
 console.log(document.getElementsByTagName('canvas')[0].toDataURL("image/png"));
 
 </script>

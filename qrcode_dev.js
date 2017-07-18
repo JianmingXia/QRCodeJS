@@ -949,9 +949,8 @@ var QRCode;
             if (this._htOption.img_src && _isSupportCanvas) {
     			var base_image = new Image();
 
-    			base_image.src = this._htOption.img_src;
                 // 设置图片的跨域
-                base_image.crossOrigin = "Anonymous";
+                base_image.crossOrigin = "*";
 
     			var qrcode_width = this._htOption.width;
     			var img_width = this._htOption.img_width;
@@ -960,11 +959,20 @@ var QRCode;
 
                 var self = this;
 	            base_image.onload = function(){
-    				_oContext.drawImage(base_image, margin, margin, img_width, img_width);
-                    if(!self._htOption.use_canvas) {
-                        self.makeImage();
+                    if(base_image.src == self._htOption.img_src) {
+        				_oContext.drawImage(base_image, margin, margin, img_width, img_width);
+                        if(!self._htOption.use_canvas) {
+                            self.makeImage();
+                        }
                     }
     			}
+    			base_image.src = this._htOption.img_src;
+
+                // make sure the load event fires for cached images too
+                if ( base_image.complete || base_image.complete === undefined ) {
+                    base_image.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+                    base_image.src = this._htOption.img_src;
+                }
             }
 
             this._bIsPainted = true;
