@@ -807,7 +807,7 @@ var QRCode;
         return Drawing;
     })() : (function() { // Drawing in Canvas
         function _onMakeImage() {
-			if(this._htOption.img_src) {
+			if(this._htOption.img_src && this._htOption.use_canvas) {
 				this._elImage.style.display = "none";
 				this._elCanvas.style.display = "block";
 			} else {
@@ -955,10 +955,12 @@ var QRCode;
 
     			var margin = (qrcode_width - img_width) / 2;
 
-                debugger;
-    			base_image.onload = function(){
+                var self = this;
+	            base_image.onload = function(){
     				_oContext.drawImage(base_image, margin, margin, img_width, img_width);
-                    console.log(document.getElementsByTagName('canvas')[0].toDataURL("image/png"));
+                    if(!self._htOption.use_canvas) {
+                        self.makeImage();
+                    }
     			}
             }
 
@@ -1090,7 +1092,8 @@ var QRCode;
             colorLight: "#ffffff",
             correctLevel: QRErrorCorrectLevel.H,
 			img_width: 64,
-			img_src: ""
+			img_src: "",
+            use_canvas: true
         };
 
         if (typeof vOption === 'string') {
@@ -1136,7 +1139,9 @@ var QRCode;
         this._el.title = sText;
         this._oDrawing.draw(this._oQRCode);
 
-        this.makeImage();
+        if(!this._htOption.img_src || this._htOption.use_canvas) {
+            this.makeImage();
+        }
     };
 
     /**

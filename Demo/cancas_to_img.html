@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 <!-- <script type="text/javascript" src="qrcode.min.js"></script> -->
-<script type="text/javascript" src="./qrcode.js"></script>
+<script type="text/javascript" src="../qrcode_dev.js"></script>
 </head>
 <body>
 <div id="qrcode_1" style="width:200px; height:200px; margin-top:15px;"></div>
@@ -17,7 +17,8 @@ new QRCode(document.getElementById("qrcode_1"), {
 	height : 200,
 	text: "https://github.com/JianmingXia/QRCodeJSddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
 	img_src: "../img/user.jpg",
-	img_width: 50
+	img_width: 50,
+    use_canvas: false // (是否使用canvas绘制，默认true)
 });
 
 debugger;
