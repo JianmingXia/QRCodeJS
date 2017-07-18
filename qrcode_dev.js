@@ -948,7 +948,10 @@ var QRCode;
 
             if (this._htOption.img_src && _isSupportCanvas) {
     			var base_image = new Image();
+
     			base_image.src = this._htOption.img_src;
+                // 设置图片的跨域
+                base_image.crossOrigin = "Anonymous";
 
     			var qrcode_width = this._htOption.width;
     			var img_width = this._htOption.img_width;
