@@ -9,6 +9,7 @@
 <body>
 <div id="qrcode_1" style="width:200px; height:200px; margin-top:15px;"></div>
 <div id="qrcode_2" style="width:200px; height:200px; margin-top:15px;"></div>
+<div id="qrcode_3" style="width:200px; height:200px; margin-top:15px;"></div>
 
 <script type="text/javascript">
 
@@ -21,6 +22,14 @@ new QRCode(document.getElementById("qrcode_1"), {
 });
 
 new QRCode(document.getElementById("qrcode_2"), {
+	width : 200,
+	height : 200,
+	text: "https://github.com/JianmingXia/QRCodeJS",
+	img_src: "img/user.jpg",
+	use_canvas: false
+});
+
+new QRCode(document.getElementById("qrcode_3"), {
 	width : 200,
 	height : 200,
 	text: "https://github.com/JianmingXia/QRCodeJS",

@@ -36,6 +36,18 @@ qrcode.clear(); // clear the code.
 qrcode.makeCode("http://github.com"); // make another code.
 ```
 
+## 属性
+	- img_src：设置在二维码中间图片的url
+		- 图片必须是可访问的，需要注意跨域的问题
+	- img_width: 二维码中间图片的宽度
+		- 如果没有设置，默认是二维码宽度的1/4
+	- use_canvas: 是否使用canvas绘制（针对img_src属性被设置的情况下有效）
+		- 前提是浏览器支持canvas，默认值是true；
+		- 设置为false则使用img标签展示二维码，需要注意的是，这个时候速度会比较慢（需要等待img_src加载完成）
+
+## 说明
+	qrcode_dev.js是不稳定的调试版，当然，qrcode.js也不一定稳定，但是相对于qrcode_dev.js，会更加稳定。
+
 ## 浏览器兼容性
 IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.
 

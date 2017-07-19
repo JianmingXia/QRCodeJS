@@ -807,7 +807,7 @@ var QRCode;
         return Drawing;
     })() : (function() { // Drawing in Canvas
         function _onMakeImage() {
-			if(this._htOption.img_src) {
+			if(this._htOption.img_src && this._htOption.use_canvas) {
 				this._elImage.style.display = "none";
 				this._elCanvas.style.display = "block";
 			} else {
@@ -948,16 +948,29 @@ var QRCode;
 
             if (this._htOption.img_src && _isSupportCanvas) {
     			var base_image = new Image();
-    			base_image.src = this._htOption.img_src;
+
+                // 设置图片的跨域
+                base_image.crossOrigin = "*";
 
     			var qrcode_width = this._htOption.width;
     			var img_width = this._htOption.img_width;
 
     			var margin = (qrcode_width - img_width) / 2;
 
-    			base_image.onload = function(){
-    				_oContext.drawImage(base_image, margin, margin, img_width, img_width);
+                var self = this;
+	            base_image.onload = function(){
+                    _oContext.drawImage(base_image, margin, margin, img_width, img_width);
+                    if(!self._htOption.use_canvas) {
+                        self.makeImage();
+                    }
     			}
+    			base_image.src = this._htOption.img_src;
+
+                // make sure the load event fires for cached images too
+                if ( base_image.complete || base_image.complete === undefined ) {
+                    base_image.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+                    base_image.src = this._htOption.img_src;
+                }
             }
 
             this._bIsPainted = true;
@@ -1087,9 +1100,11 @@ var QRCode;
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRErrorCorrectLevel.H,
-			img_width: 64,
-			img_src: ""
+			img_src: "",
+            use_canvas: true
         };
+
+        this._htOption.img_width = this._htOption.width / 4;
 
         if (typeof vOption === 'string') {
             vOption = {
@@ -1101,6 +1116,9 @@ var QRCode;
         if (vOption) {
             for (var i in vOption) {
                 this._htOption[i] = vOption[i];
+            }
+            if(vOption.width && !vOption.img_width) {
+                this._htOption.img_width = this._htOption.width / 4;
             }
         }
 
@@ -1134,7 +1152,9 @@ var QRCode;
         this._el.title = sText;
         this._oDrawing.draw(this._oQRCode);
 
-        this.makeImage();
+        if(!this._htOption.img_src || this._htOption.use_canvas) {
+            this.makeImage();
+        }
     };
 
     /**
